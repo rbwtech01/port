@@ -2,14 +2,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import GitHubActivity from "../components/sections/GitHubActivity";
 
 const navigation = [
   { label: "Home", href: "#home" },
   { label: "Work", href: "#work" },
+  { label: "GitHub", href: "#github" },
+  { label: "Skills", href: "#skills" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
+
+const contactEmail = "singhdeepak84088@gmail.com";
+const gmailComposeUrl = `https://mail.google.com/mail/?${new URLSearchParams({
+  view: "cm",
+  fs: "1",
+  to: contactEmail,
+  su: "Project inquiry for Deepak Singh",
+  body: [
+    "Hi Deepak,",
+    "",
+    "I'd love to discuss a project with you.",
+    "",
+    "A few details:",
+    "- What I need:",
+    "- Timeline:",
+    "",
+    "Thanks,",
+  ].join("\n"),
+})}`;
 
 const services = [
   {
@@ -35,6 +57,21 @@ const services = [
     title: "E-commerce",
     description:
       "Modern online stores that make discovering and purchasing products simple.",
+  },
+];
+
+const skillGroups = [
+  {
+    title: "Frontend",
+    skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "Next.js"],
+  },
+  {
+    title: "Backend",
+    skills: ["Node.js", "Express.js", "PHP", "Laravel", "Python", "FastAPI"],
+  },
+  {
+    title: "Databases & tools",
+    skills: ["MongoDB", "MySQL", "Git", "Postman"],
   },
 ];
 
@@ -123,7 +160,7 @@ export default function Home() {
             onClick={() => setMenuOpen(false)}
             className="text-xl font-bold tracking-tight"
           >
-            YOUR NAME<span className="text-blue-600">.</span>
+            DEEPAK SINGH<span className="text-blue-600">.</span>
           </a>
 
           {/* DESKTOP MENU */}
@@ -287,10 +324,10 @@ export default function Home() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-zinc-500 dark:text-zinc-400">
-              <span>Next.js</span>
-              <span>TypeScript</span>
-              <span>Tailwind CSS</span>
+              <span>JavaScript</span>
               <span>React</span>
+              <span>Next.js</span>
+              <span>Node.js</span>
             </div>
 
           </div>
@@ -407,6 +444,59 @@ export default function Home() {
         </div>
       </section>
 
+      <GitHubActivity username="singdeepak" isDark={isDark} />
+
+      {/* SKILLS */}
+      <section
+        aria-labelledby="skills-heading"
+        className="scroll-mt-24 border-t border-zinc-200 px-5 py-24 dark:border-white/10 sm:px-8 lg:px-12"
+        id="skills"
+      >
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400">
+            Skills & technologies
+          </p>
+
+          <div className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <h2
+              className="max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl"
+              id="skills-heading"
+            >
+              Tools I use to build
+              <span className="text-zinc-400 dark:text-zinc-500">
+                {" "}
+                end-to-end products.
+              </span>
+            </h2>
+            <p className="max-w-sm text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+              A practical toolkit for building responsive interfaces, APIs and
+              data-backed applications.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {skillGroups.map((group) => (
+              <article
+                className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 dark:border-white/10 dark:bg-white/[0.02] sm:p-8"
+                key={group.title}
+              >
+                <h3 className="text-lg font-semibold">{group.title}</h3>
+                <ul className="mt-5 flex flex-wrap gap-2.5">
+                  {group.skills.map((skill) => (
+                    <li
+                      className="rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-sm font-medium text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300"
+                      key={skill}
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SERVICES */}
       <section
         id="services"
@@ -461,25 +551,50 @@ export default function Home() {
             </p>
 
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              More than just
-              <span className="text-zinc-400 dark:text-zinc-500"> writing code.</span>
+              Web developer focused on
+              <span className="text-zinc-400 dark:text-zinc-500">
+                {" "}
+                useful digital products.
+              </span>
             </h2>
           </div>
 
           <div>
             <p className="text-base leading-8 text-zinc-600 dark:text-zinc-400">
-              I believe a website should do more than look beautiful.
-              It should communicate value, build trust and help a
-              business move forward.
+              I have two years of web development experience building
+              responsive interfaces and practical web applications. I enjoy
+              working across the frontend and backend to turn requirements
+              into clear, reliable experiences.
             </p>
 
             <p className="mt-5 text-base leading-8 text-zinc-600 dark:text-zinc-400">
-              My approach combines modern development, thoughtful
-              user experiences and an understanding of business goals.
-              Every project starts with understanding the problem.
+              I completed my Master of Computer Applications (MCA) in 2024.
+              My approach combines thoughtful user experiences with modern
+              web technologies and maintainable implementation.
             </p>
           </div>
 
+        </div>
+
+        <div className="mx-auto mt-10 grid max-w-7xl gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-white/10 dark:bg-white/[0.02]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+              Experience
+            </p>
+            <p className="mt-2 text-lg font-semibold">2 years</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Web development
+            </p>
+          </div>
+          <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-white/10 dark:bg-white/[0.02]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+              Education
+            </p>
+            <p className="mt-2 text-lg font-semibold">MCA</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Completed in 2024
+            </p>
+          </div>
         </div>
       </section>
 
@@ -506,11 +621,23 @@ export default function Home() {
             </p>
 
             <a
-              href="mailto:hello@example.com"
+              href={gmailComposeUrl}
+              rel="noreferrer"
+              target="_blank"
               className="mt-10 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-blue-700 transition hover:-translate-y-1 hover:bg-blue-50"
             >
-              Start a conversation ↗
+              Start a conversation in Gmail ↗
             </a>
+
+            <p className="mt-5 text-sm text-blue-100">
+              Prefer your email app?{" "}
+              <a
+                className="font-semibold underline underline-offset-4 hover:text-white"
+                href={`mailto:${contactEmail}`}
+              >
+                {contactEmail}
+              </a>
+            </p>
 
           </div>
         </div>
@@ -522,12 +649,19 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
 
           <a href="#home" className="text-lg font-bold">
-            YOUR NAME<span className="text-blue-600">.</span>
+            DEEPAK SINGH<span className="text-blue-600">.</span>
           </a>
 
           <p className="text-xs text-zinc-500">
-            © Your Name. All rights reserved.
+            © Deepak Singh. All rights reserved.
           </p>
+
+          <a
+            className="text-sm text-zinc-500 transition hover:text-blue-600"
+            href={`mailto:${contactEmail}`}
+          >
+            {contactEmail}
+          </a>
 
           <a
             href="#home"

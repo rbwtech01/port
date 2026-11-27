@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "react-github-calendar/tooltips.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name | Independent Web Developer",
+  title: "Deepak Singh | Independent Web Developer",
   description:
     "I design and build thoughtful digital experiences, websites, and web applications for ambitious businesses.",
 };
